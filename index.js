@@ -28,7 +28,7 @@ const server=app.listen(process.env.PORT,()=>
 
 const io=socket(server,{
     cors:{
-        origin:"https://remarkable-kitsune-519653.netlify.app/",
+        origin:"https://remarkable-kitsune-519653.netlify.app",
         Credentials: true,
         methods: ["GET", "POST"]
     },
