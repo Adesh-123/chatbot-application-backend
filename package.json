@@ -4,7 +4,7 @@
   "description": "chat api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "adesh kumar singh",
   "license": "ISC",
