@@ -1,11 +1,12 @@
 const router=require('express').Router();
 const Message = require("../models/Message");
+const CryptoJS = require("crypto-js");
 
 router.post("/addmessage",async(req,res)=>{
     try{
         const { from, to, message } = req.body;
         const data = await Message.create({
-          message: { text: message },
+          message: { text: CryptoJS.AES.encrypt(message,process.env.SECRET_KEY).toString() },
           users: [from, to],
           sender: from,
         });
@@ -28,7 +29,7 @@ router.post("/getallmessage",async(req,res)=>{
     const projectedMessages = messages.map((msg) => {
       return {
         fromSelf: msg.sender.toString() === from,
-        message: msg.message.text,
+        message: CryptoJS.AES.decrypt(msg.message.text, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8),
       };
     });
     res.json(projectedMessages);
