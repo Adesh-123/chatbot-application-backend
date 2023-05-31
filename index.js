@@ -18,7 +18,7 @@ app.use("/api/auth",require('./routes/user'));
 app.use("/api/message",require('./routes/messageapi'));
 
 app.use("/",(req,res)=>{
-  res.send("hii");
+  res.send("hii aadesh");
 })
 
 
